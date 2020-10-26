@@ -19,6 +19,8 @@ will share graphs of group growth around the first of every month.\
     articles
 -   [top50\_mostarticles.txt](https://theuse.net/reports/top50_mostarticles.txt):
     Top 50 newsgroups by number of articles in any hierarchy
+-   [top1000\_mostarticles.txt](https://theuse.net/reports/top1000_mostarticles.txt):
+    Top 1000 newsgroups by number of articles in any hierarchy
 -   [sizereport.txt](https://theuse.net/reports/sizereport.txt): The
     current total number of articles on my server broken down by largest
     hirearchies in csv format
