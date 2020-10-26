@@ -26,3 +26,5 @@ will share graphs of group growth around the first of every month.\
     hirearchies in csv format
 -   [inn\_status](https://theuse.net/inn/inn_status.html): My INN
     server\'s stats page
+
+Back to my [blog](https://blog.theuse.net/)
