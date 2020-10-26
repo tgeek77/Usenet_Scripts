@@ -18,7 +18,7 @@ will share graphs of group growth around the first of every month.\
     List of newsgroups in the Big-8 hierarchies by the number of
     articles
 -   [top50\_mostarticles.txt](https://theuse.net/reports/top50_mostarticles.txt):
-    Top 50 newsgroups by number of articles
+    Top 50 newsgroups by number of articles in any hierarchy
 -   [sizereport.txt](https://theuse.net/reports/sizereport.txt): The
     current total number of articles on my server broken down by largest
     hirearchies in csv format
