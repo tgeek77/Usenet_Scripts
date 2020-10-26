@@ -1,25 +1,43 @@
 #!/bin/bash
 
 NOW=`date '+%F_%H:%M:%S'`
-echo "Total number of articles:" > /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/ -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo "Total number of articles: alt.*" >> /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/alt -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo "Total number of articles: comp.*" >> /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/comp -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo "Total number of articles: news.*" >> /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/news -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo "Total number of articles: misc.*" >> /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/misc -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo "Total number of articles: sci.*" >> /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/sci -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo "Total number of articles: humanities.*" >> /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/humanities -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo "Total number of articles: rec.*" >> /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/rec -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo "Total number of articles: soc.*" >> /home/jsevans/reports/$NOW-report.txt; find /var/spool/news/articles/soc -type f -name '*' -printf x | wc -c >> /home/jsevans/reports/$NOW-report.txt
-echo
-echo
-echo "Total size of archive:" >> /home/jsevans/reports/$NOW-report.txt; du -sh /var/spool/news/articles >> /home/jsevans/reports/$NOW-report.txt
+ARTICLES=`find /var/spool/news/articles/ -type f -name '*' -printf x | wc -c`
+ALT=`find /var/spool/news/articles/alt -type f -name '*' -printf x | wc -c`
+COMP=`find /var/spool/news/articles/comp -type f -name '*' -printf x | wc -c`
+NEWS=`find /var/spool/news/articles/news -type f -name '*' -printf x | wc -c`
+MISC=`find /var/spool/news/articles/misc -type f -name '*' -printf x | wc -c`
+SCI=`find /var/spool/news/articles/sci -type f -name '*' -printf x | wc -c`
+HUM=`find /var/spool/news/articles/humanities -type f -name '*' -printf x | wc -c`
+REC=`find /var/spool/news/articles/rec -type f -name '*' -printf x | wc -c`
+SOC=`find /var/spool/news/articles/soc -type f -name '*' -printf x | wc -c`
+TALK=`find /var/spool/news/articles/talk -type f -name '*' -printf x | wc -c`
+FREE=`find /var/spool/news/articles/free -type f -name '*' -printf x | wc -c`
+SIZE=`du -s /var/spool/news/articles | awk '{print $1}'`
+SIZEMB=`expr $SIZE / 1024`
 
+echo $NOW > /var/www/html/reports/sizereport.txt
+printf "$ARTICLES" >> /var/www/html/reports/sizereport.txt; printf ", Total number of articles:" >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$ALT" >> /var/www/html/reports/sizereport.txt; printf ",alt." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$COMP" >> /var/www/html/reports/sizereport.txt; printf ",comp." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$NEWS" >> /var/www/html/reports/sizereport.txt; printf ",news." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$MISC" >> /var/www/html/reports/sizereport.txt; printf ",misc." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$SCI" >> /var/www/html/reports/sizereport.txt; printf ",sci." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$HUM" >> /var/www/html/reports/sizereport.txt; printf ",humanities." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$REC" >> /var/www/html/reports/sizereport.txt; printf ",rec." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$SOC" >> /var/www/html/reports/sizereport.txt; printf ",soc." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$TALK" >> /var/www/html/reports/sizereport.txt; printf ",talk." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$FREE" >> /var/www/html/reports/sizereport.txt; printf ",free." >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
+printf "$SIZEMB" >> /var/www/html/reports/sizereport.txt; printf ", Current size in MB" >> /var/www/html/reports/sizereport.txt
+echo >> /var/www/html/reports/sizereport.txt
 
