@@ -36,4 +36,5 @@ mv -v /var/www/html/reports/$NOW.expire_articles.txt /var/www/html/reports/archi
 echo "ignored articles"
 echo
 cp -v /var/log/news/unwanted.log /var/www/html/reports/unwanted.txt
-cp -v /var/www/html/reports/unwanted.txt /var/www/html/reports/archive/$NOW.unwanted.txt 
+chmod 666 /var/www/html/reports/unwanted.txt
+cp -v /var/www/html/reports/unwanted.txt /var/www/html/reports/archive/$NOW.unwanted.txt
