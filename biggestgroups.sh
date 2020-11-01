@@ -26,3 +26,14 @@ find /var/spool/news/articles -xdev -type d -exec sh -c '
 cp -v /var/www/html/reports/$NOW.top1000_mostarticles.txt /var/www/html/reports/top1000_mostarticles.txt
 mv -v /var/www/html/reports/$NOW.top1000_mostarticles.txt /var/www/html/reports/archive/$NOW.top1000_mostarticles.txt
 
+echo "articles with expire headers"
+echo
+echo $NOW > /var/www/html/reports/$NOW.expire_articles.txt
+grep -r Expires: /var/spool/news/articles/ >> /var/www/html/reports/$NOW.expire_articles.txt
+cp -v /var/www/html/reports/$NOW.expire_articles.txt /var/www/html/reports/expire_articles.txt
+mv -v /var/www/html/reports/$NOW.expire_articles.txt /var/www/html/reports/archive/$NOW.expire_articles.txt
+
+echo "ignored articles"
+echo
+cp -v /var/log/news/unwanted.log /var/www/html/reports/$NOW.unwanted.txt
+mv -v /var/www/html/reports/$NOW.unwanted.txt /var/www/html/reports/archive/$NOW.unwanted.txt
