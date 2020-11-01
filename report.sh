@@ -14,6 +14,7 @@ TALK=`find /var/spool/news/articles/talk -type f -name '*' -printf x | wc -c`
 FREE=`find /var/spool/news/articles/free -type f -name '*' -printf x | wc -c`
 SIZE=`du -s /var/spool/news/articles | awk '{print $1}'`
 SIZEMB=`expr $SIZE / 1024`
+EXPIRED=`grep -r Expires: /var/spool/news/articles/ | wc -l`
 
 echo $NOW > /var/www/html/reports/$NOW.sizereport.txt
 printf "Total number of articles:," >> /var/www/html/reports/$NOW.sizereport.txt;printf "$ARTICLES" >> /var/www/html/reports/$NOW.sizereport.txt
@@ -40,6 +41,8 @@ printf "soc.," >> /var/www/html/reports/$NOW.sizereport.txt;printf "$SOC" >> /va
 echo >> /var/www/html/reports/$NOW.sizereport.txt
 printf "talk.," >> /var/www/html/reports/$NOW.sizereport.txt;printf "$TALK" >> /var/www/html/reports/$NOW.sizereport.txt
 echo >> /var/www/html/reports/$NOW.sizereport.txt
+printf "Expired," >> /var/www/html/reports/$NOW.sizereport.txt;printf "$EXPIRED" >> /var/www/html/reports/$NOW.sizereport.txt
+echo >> /var/www/html/reports/$NOW.sizereport.txt
 
 cp -v /var/www/html/reports/$NOW.sizereport.txt /var/www/html/reports/sizereport.txt
-mv -v /var/www/html/reports/$NOW.sizereport.txt /var/www/html/reports/archive/$NOW.sizereport.txt 
+mv -v /var/www/html/reports/$NOW.sizereport.txt /var/www/html/reports/archive/$NOW.sizereport.txt
